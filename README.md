@@ -43,21 +43,38 @@ The repository includes Jupyter notebooks for model training, evaluation, and Fl
 ## 📂 Project Structure
 
 COSMOS-CV/
+├── forecast_app/ # Flask app for weather forecasting (app.py)
+│ ├── static/
+│ └── templates/
 │
-├── checkpoints/              # Saved model checkpoints
-├── static/                   # Static assets for Flask apps (images, CSS)
-├── templates/                # HTML templates for Flask apps
-├── uploads/                  # Directory for user-uploaded files
+├── debris_flask/ # Flask app for debris detection (app_debris.py)
+│ ├── static/
+│ └── templates/
 │
-├── COSMOS_weather.ipynb      # Notebook for training the weather forecasting model
-├── COSMOS_debris.ipynb       # Notebook for training the space debris detection model
-├── COSMOS_weather_eval.ipynb # Notebook for evaluating weather model performance
-├── COSMOS_debris_hadoop.ipynb # Notebook demonstrating debris detection with Hadoop integration
+├── checkpoints/ # Directories for various saved model checkpoints
+├── checkpoints_O/
+├── checkpoints_pyspark_trained/
+├── ckpts_gpu/
 │
-├── app.py                    # Flask application for the weather forecasting service
-├── app_debris.py             # Flask application for the space debris detection service
+├── debris-detection/ # Data and resources for debris detection
+├── uploads/ # Default directory for user-uploaded files
 │
-└── README.md                 # This file
+├── COSMOS_FINAL_5_CHANNEL.ipynb # Jupyter Notebooks for model training and evaluation
+├── COSMOS_debris.ipynb
+├── COSMOS_debris_hadoop.ipynb
+├── COSMOS_debris_hadoop_pyspark.ipynb
+├── COSMOS_trial2.ipynb
+├── COSMOS_weather.ipynb
+├── COSMOS_weather_eval.ipynb
+├── COSMOS_weather_pyspark.ipynb
+│
+├── .gitattributes
+├── LICENSE
+└── README.md
+
+markdown
+Copy
+Edit
 
 
 ## ⚙️ Setup and Installation
