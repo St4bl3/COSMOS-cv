@@ -40,26 +40,26 @@ The repository includes Jupyter notebooks for model training, evaluation, and Fl
 * **Visualization:** Matplotlib, Cartopy, Seaborn
 * **Containerization (Implied):** The use of distributed systems suggests that the applications are designed to be containerized with tools like Docker.
 
-## 📂 Project Structure
+## 📁 Project Structure
 
 COSMOS-CV/
-├── forecast_app/ # Flask app for weather forecasting (app.py)
-│ ├── static/
-│ └── templates/
+├── forecast_app/                       # Flask app for weather forecasting (app.py)
+│   ├── static/
+│   └── templates/
 │
-├── debris_flask/ # Flask app for debris detection (app_debris.py)
-│ ├── static/
-│ └── templates/
+├── debris_flask/                       # Flask app for debris detection (app_debris.py)
+│   ├── static/
+│   └── templates/
 │
-├── checkpoints/ # Directories for various saved model checkpoints
+├── checkpoints/                        # Directories for various saved model checkpoints
 ├── checkpoints_O/
 ├── checkpoints_pyspark_trained/
 ├── ckpts_gpu/
 │
-├── debris-detection/ # Data and resources for debris detection
-├── uploads/ # Default directory for user-uploaded files
+├── debris-detection/                   # Data and resources for debris detection
+├── uploads/                            # Default directory for user-uploaded files
 │
-├── COSMOS_FINAL_5_CHANNEL.ipynb # Jupyter Notebooks for model training and evaluation
+├── COSMOS_FINAL_5_CHANNEL.ipynb        # Jupyter Notebooks for model training and evaluation
 ├── COSMOS_debris.ipynb
 ├── COSMOS_debris_hadoop.ipynb
 ├── COSMOS_debris_hadoop_pyspark.ipynb
@@ -71,10 +71,6 @@ COSMOS-CV/
 ├── .gitattributes
 ├── LICENSE
 └── README.md
-
-markdown
-Copy
-Edit
 
 
 ## ⚙️ Setup and Installation
