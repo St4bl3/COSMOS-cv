@@ -41,6 +41,7 @@ The repository includes Jupyter notebooks for model training, evaluation, and Fl
 * **Containerization (Implied):** The use of distributed systems suggests that the applications are designed to be containerized with tools like Docker.
 
 ## 📁 Project Structure
+```
 
 COSMOS-CV/
 ├── forecast_app/                       # Flask app for weather forecasting (app.py)
@@ -71,6 +72,7 @@ COSMOS-CV/
 ├── .gitattributes
 ├── LICENSE
 └── README.md
+```
 
 
 ## ⚙️ Setup and Installation
