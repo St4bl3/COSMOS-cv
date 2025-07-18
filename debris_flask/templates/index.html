@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Asteroid Dodger - Upload Video</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload Your Asteroid Video</h1>
+
+      {% if error %}
+      <p class="error-message">{{ error }}</p>
+      {% endif %}
+
+      <form method="post" enctype="multipart/form-data" id="uploadForm">
+        <input
+          type="file"
+          name="video"
+          accept="video/*"
+          required
+          class="file-input"
+        />
+        <button type="submit" class="btn">Process Video</button>
+      </form>
+    </div>
+  </body>
+</html>

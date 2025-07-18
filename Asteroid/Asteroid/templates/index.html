@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid 3D Path Visualizer (CDN)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; background-color: #f0f0f0; }
+        #controls { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom:20px; width: 80%; max-width: 700px; }
+        #sceneContainer { width: 80%; max-width: 800px; height: 600px; border: 1px solid #ccc; background-color: #000; position: relative; }
+        #status { margin-top: 10px; font-style: italic; }
+        .loader { border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <h1>Asteroid 3D Path Visualizer (CDN)</h1>
+
+    <div id="controls">
+        <input type="file" id="videoFile" accept="video/*">
+        <button id="uploadButton">Upload and Process Video</button>
+        <button id="stopButton" disabled>Stop Processing</button>
+        <div id="status">Upload a video to begin.</div>
+        <div class="loader" id="loader"></div>
+    </div>
+
+    <div id="sceneContainer">
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Flask
+torch
+torchvision
+opencv-python
+Pillow
+numpy
+werkzeug

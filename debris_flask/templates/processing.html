@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Processing Video...</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      .progress-bar-container {
+        width: 80%;
+        max-width: 500px;
+        background-color: #e0e0e0;
+        border-radius: 25px;
+        margin: 20px auto;
+        padding: 3px;
+      }
+      .progress-bar {
+        width: 0%; /* Initial width */
+        height: 20px;
+        background-color: black; /* Progress color */
+        border-radius: 25px;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+        font-size: 0.8em;
+        transition: width 0.5s ease-in-out;
+      }
+      .status-message {
+        margin-top: 15px;
+        font-size: 1.1em;
+        color: black;
+      }
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color: black; /* Spinner color */
+        animation: spin 1s ease infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Processing Your Video</h1>
+      <div id="spinner" class="spinner"></div>
+      <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar">0%</div>
+      </div>
+      <p id="statusText" class="status-message">Initializing...</p>
+
+      <div id="resultLinkContainer" style="display: none; margin-top: 20px">
+        <a href="" id="resultLink" class="btn">View Processed Video</a>
+      </div>
+      <div id="errorContainer" style="display: none; margin-top: 20px">
+        <p class="error-message" id="errorMessageText"></p>
+        <a href="{{ url_for('index') }}" class="btn-secondary">Try Again</a>
+      </div>
+    </div>
+
+    <script>
+      const taskId = "{{ task_id }}";
+      const statusText = document.getElementById("statusText");
+      const progressBar = document.getElementById("progressBar");
+      const spinner = document.getElementById("spinner");
+      const resultLinkContainer = document.getElementById(
+        "resultLinkContainer"
+      );
+      const resultLink = document.getElementById("resultLink");
+      const errorContainer = document.getElementById("errorContainer");
+      const errorMessageText = document.getElementById("errorMessageText");
+
+      function checkStatus() {
+        fetch(`/status/${taskId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            statusText.textContent = data.message || "Fetching status...";
+            let progress = parseInt(data.progress) || 0;
+            progressBar.style.width = progress + "%";
+            progressBar.textContent = progress + "%";
+
+            if (data.status === "Complete") {
+              spinner.style.display = "none";
+              progressBar.style.backgroundColor = "#28a745"; // Green for success
+              statusText.textContent = "Processing Complete!";
+              resultLink.href = `/results/${data.filename}`;
+              resultLinkContainer.style.display = "block";
+              // Optionally, redirect automatically:
+              // window.location.href = `/results/${data.filename}`;
+            } else if (data.status === "Error") {
+              spinner.style.display = "none";
+              progressBar.style.backgroundColor = "#dc3545"; // Red for error
+              statusText.textContent = "An error occurred.";
+              errorMessageText.textContent =
+                data.message || "Unknown error during processing.";
+              errorContainer.style.display = "block";
+            } else if (
+              data.status === "Processing" ||
+              data.status === "Pending"
+            ) {
+              // If still processing, schedule another check
+              setTimeout(checkStatus, 1500); // Poll every 1.5 seconds
+            } else if (data.status === "Unknown") {
+              spinner.style.display = "none";
+              statusText.textContent =
+                "Task status unknown or task ID not found.";
+              progressBar.style.backgroundColor = "#ffc107"; // Yellow for warning
+              errorMessageText.textContent =
+                data.message || "Could not retrieve task status.";
+              errorContainer.style.display = "block";
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching status:", error);
+            statusText.textContent =
+              "Error fetching status. Please check console.";
+            spinner.style.display = "none";
+            progressBar.style.backgroundColor = "#dc3545";
+            errorMessageText.textContent =
+              "Could not connect to server to get status.";
+            errorContainer.style.display = "block";
+          });
+      }
+
+      // Initial call to start polling
+      checkStatus();
+    </script>
+  </body>
+</html>

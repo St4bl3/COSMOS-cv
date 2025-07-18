@@ -1,0 +1,120 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.container {
+  background-color: white; /* Ensuring container is white */
+  padding: 30px 40px;
+  border-radius: 10px; /* Elegant curve */
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for elegance */
+}
+
+h1 {
+  color: black;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.file-input {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  margin-bottom: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+.file-input::file-selector-button {
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+.file-input::file-selector-button:hover {
+  background-color: #333;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 25px; /* Elegant curve */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  text-decoration: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 25px;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background-color: #777;
+  transform: translateY(-2px);
+}
+
+video {
+  border: 2px solid black;
+  border-radius: 8px;
+  margin-top: 20px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f0f0f0; /* Placeholder background for video area */
+}
+
+.error-message {
+  color: #dc3545; /* Bootstrap danger color */
+  background-color: #f8d7da; /* Light red background */
+  border: 1px solid #f5c6cb;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: left;
+}

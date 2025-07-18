@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Processed Video</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Processed Video</h1>
+    <div class="video-container">
+      {% if video_file %}
+      <video
+        id="processedVideo"
+        width="720"
+        controls
+        autoplay
+        muted
+        playsinline
+      >
+        <source
+          src="{{ url_for('video_feed', filename=video_file) }}"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag or the video format. Try
+        downloading the video:
+        <a href="{{ url_for('download_video', filename=video_file) }}"
+          >Download</a
+        >
+      </video>
+      <p>
+        <a href="{{ url_for('download_video', filename=video_file) }}"
+          >Download Processed Video</a
+        >
+      </p>
+      {% else %}
+      <p>Error: Video file not specified or not found.</p>
+      {% endif %}
+    </div>
+    <p><a href="{{ url_for('index') }}">Process another video</a></p>
+
+    <script>
+      // Optional: you can add JavaScript here if needed, for example, to handle video errors
+      const videoElement = document.getElementById("processedVideo");
+      if (videoElement) {
+        videoElement.addEventListener("error", function (e) {
+          console.error("Video playback error:", e);
+          // You could display a more user-friendly message here
+        });
+        // Attempt to play if autoplay doesn't trigger for some reason
+        videoElement.play().catch((error) => {
+          console.warn("Autoplay was prevented:", error);
+          // Browsers might prevent autoplay if not muted or no user interaction
+        });
+      }
+    </script>
+  </body>
+</html>
